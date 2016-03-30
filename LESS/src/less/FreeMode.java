@@ -13,24 +13,18 @@ import java.util.List;
 import static less.QuestionMode.file;
 
 public class FreeMode {
-    
-    /*
-     * To do:
-     * We have to make the path with systemproperties and we have to make a put the path in the function speech
-     *
-    */
      static File file = null;
      static List<Gegenstand> toys = new LinkedList<Gegenstand>();
      private static String actToy = " ";
      
     public static void main(String... args) throws Exception {
-        CsvReader.read(toys);
+        CsvReader.read(toys);                                                   //read the toys from csv
         RFIDPhidget rfid;
         rfid = new RFIDPhidget();
         
         CsvReader.read(toys);
         //Chip scanner (RFID) conectet
-        rfid.addAttachListener(new AttachListener() {
+        rfid.addAttachListener(new AttachListener() {                           //check if the RFID Reader is Connected
             public void attached(AttachEvent ae) {
                 try {
                     ((RFIDPhidget) ae.getSource()).setAntennaOn(true);
@@ -40,28 +34,27 @@ public class FreeMode {
                 System.out.println("attachment of " + ae);
             }
         });
-        //Chip scanner (RFID) disconennctet
-        rfid.addDetachListener(new DetachListener() {
+                
+        rfid.addDetachListener(new DetachListener() {                           //check if the RFID Reader is Disconnected
             public void detached(DetachEvent ae) {
                 System.out.println("detachment of " + ae);
             }
         });
-        //Chip scanner (RFID) has an error
-        rfid.addErrorListener(new ErrorListener() {
+        
+        rfid.addErrorListener(new ErrorListener() {                             //check if the RFID Reader is broken
             public void error(ErrorEvent ee) {
                 System.out.println("error event for " + ee);
             }
         });
-        //Now it begins reading chips
-        rfid.addTagGainListener(new TagGainListener() {
+        rfid.addTagGainListener(new TagGainListener() {                         //Read the Chips
             public void tagGained(TagGainEvent oe) {
                 try {
-                    for (int i = 0; i < toys.size(); i++) {
+                    for (int i = 0; i < toys.size(); i++) {                     //search the toy in the list of the toys
                         if (oe.getValue().equals(toys.get(i).getId())) {
                                 actToy = toys.get(i).getId();
                                 System.out.println(toys.get(i).Name);
                                 file = new File(toys.get(i).getPfadName());
-                                speech();
+                                speech();                                       //say the name of the toy
                                 break;
                         }
                     }
@@ -83,7 +76,7 @@ public class FreeMode {
         }
     }
 
-    static public void speech() throws FileNotFoundException {
+    static public void speech() throws FileNotFoundException {                  //say the audio
         FileInputStream fis = new FileInputStream(file);
         BufferedInputStream bis = new BufferedInputStream(fis);
         try {

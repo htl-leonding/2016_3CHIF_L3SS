@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * To read the data out of the csv
  */
 package less;
 
@@ -24,14 +22,20 @@ import java.util.List;
 class CsvReader {
  
     private static final String SEPARATOR = ",";
-    private static final String FILENAME = "toys.csv";
+    private static final String FILENAME = "toys.csv";      //set costants
+    public static final String path = System.getProperty("user.dir") +  //set path
+        System.getProperty("file.separator") + "mp3" + 
+        System.getProperty("file.separator");
     
-    public static void read(List<Gegenstand> gegenstandsListe) throws IOException{
+    public static void read(List<Gegenstand> gegenstandsListe) throws IOException{      //Read from csv
         List<String> lines = Files.readAllLines(Paths.get(FILENAME));
         for (String line : lines) {
             System.out.println(line);
             String[] elements = line.split(SEPARATOR);
-            Gegenstand gegenstand = new Gegenstand(elements[0], elements[1], elements[2], elements[3], elements[4]);
+            String linkNormal = path+elements[2];
+            String linkQuestion = path+elements[3];
+            String linkFalse = path+elements[4];
+            Gegenstand gegenstand = new Gegenstand(elements[0], elements[1], linkNormal, linkQuestion, linkFalse);  //set Elements
             gegenstandsListe.add(gegenstand);
         }
     }
