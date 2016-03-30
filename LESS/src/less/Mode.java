@@ -1,5 +1,8 @@
 package less;
 
+/*
+ * @author Matthias Meier, Jonas Müller, Mario Weigl, Cristian Ciora
+ */
 
 import less.FreeMode;
 import less.QuestionMode;

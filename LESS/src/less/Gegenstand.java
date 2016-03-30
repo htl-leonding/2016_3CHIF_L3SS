@@ -1,10 +1,9 @@
 package less;
 
-
-/**
- *
+/*
  * @author Matthias Meier, Jonas Müller, Mario Weigl, Cristian Ciora
  */
+
 public class Gegenstand {
     
     String Name;

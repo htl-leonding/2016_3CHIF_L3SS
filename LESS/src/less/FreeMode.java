@@ -1,8 +1,9 @@
 package less;
 
 /*
- * Matthias Meier/Jonas Müller/Ciora Cristian/Weigl Mario
+ * @author Matthias Meier, Jonas Müller, Mario Weigl, Cristian Ciora
  */
+
 import java.io.*;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.*;

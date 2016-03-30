@@ -1,7 +1,8 @@
-/*
- * To read the data out of the csv
- */
 package less;
+
+/*
+ * @author Matthias Meier, Jonas Müller, Mario Weigl, Cristian Ciora
+ */
 
 import java.io.BufferedReader;
 import java.io.IOException;
