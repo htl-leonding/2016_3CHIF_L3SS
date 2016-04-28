@@ -36,22 +36,15 @@ public class QuestionMode {
     static int i;
     static Gegenstand presentToyRFID;
     static File file = null;
+    private static RFIDPhidget rfid;
 
     /**
      * @param args the command line arguments
      * @throws com.phidgets.PhidgetException
      * @throws java.io.IOException
      */
-    public static void main(String... args) throws PhidgetException, IOException {
-        
-        /*
-         * TO DO:
-         * we have to save the numbers, that never comes a object to times
-         * make the systemproprties
-        */
-        
-        
-        RFIDPhidget rfid;
+    public static void runMode() throws PhidgetException, IOException {
+    
         CsvReader.read(toys);
         //System.out.println(Phidget.getLibraryVersion());
         rfid = new RFIDPhidget();
@@ -116,15 +109,6 @@ public class QuestionMode {
         rfid.openAny();
         rfid.waitForAttachment(100000);
         System.in.read();
-        System.out.print("closing...");
-        rfid.close();
-        rfid = null;
-        System.out.println(" ok");
-        if (false) {
-            System.out.println("wait for finalization...");
-            System.gc();
-        }
-
     }
 
     static public String transformRFIDtoToyQuestion() {
@@ -149,6 +133,17 @@ public class QuestionMode {
             Player player = new Player(bis);
             player.play();
         } catch (JavaLayerException ex) {
+        }
+    }
+    static public void closeMode() throws PhidgetException
+    {
+        System.out.print("closing...");
+        rfid.close();
+        rfid = null;
+        System.out.println(" ok");
+        if (false) {
+            System.out.println("wait for finalization...");
+            System.gc();
         }
     }
 }

@@ -17,8 +17,9 @@ public class FreeMode {
      static File file = null;
      static List<Gegenstand> toys = new LinkedList<Gegenstand>();
      private static String actToy = " ";
+     private static RFIDPhidget rfid;
      
-    public static void main(String... args) throws Exception {
+    public static void runMode() throws Exception {
         CsvReader.read(toys);                                                   //read the toys from csv
         RFIDPhidget rfid;
         rfid = new RFIDPhidget();
@@ -67,14 +68,7 @@ public class FreeMode {
         rfid.openAny();
         rfid.waitForAttachment(1000);
         System.in.read();
-        System.out.print("closing...");
-        rfid.close();
-        rfid = null;
-        System.out.println(" ok");
-        if (false) {
-            System.out.println("wait for finalization...");
-            System.gc();
-        }
+        
     }
 
     static public void speech() throws FileNotFoundException {                  //say the audio
@@ -84,6 +78,17 @@ public class FreeMode {
             Player player = new Player(bis);
             player.play();
         } catch (JavaLayerException ex) {
+        }
+    }
+    static public void closeMode() throws PhidgetException
+    {
+        System.out.print("closing...");
+        rfid.close();
+        rfid = null;
+        System.out.println(" ok");
+        if (false) {
+            System.out.println("wait for finalization...");
+            System.gc();
         }
     }
 }

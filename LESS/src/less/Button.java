@@ -14,6 +14,8 @@ import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,8 +32,20 @@ public class Button {
         myButton.addListener((GpioPinListenerDigital)(GpioPinDigitalStateChangeEvent event) -> {
             if(led.isHigh()){
                 led.setState(PinState.LOW);
+                try {
+                    QuestionMode.closeMode();
+                    FreeMode.runMode();
+                } catch (Exception ex) {
+                    Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }else{
                 led.setState(PinState.HIGH);
+                try {
+                    FreeMode.closeMode();
+                    QuestionMode.runMode();
+                } catch (Exception ex) {
+                    Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
