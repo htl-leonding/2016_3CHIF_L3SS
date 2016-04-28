@@ -24,29 +24,34 @@ import java.util.logging.Logger;
 public class Button {
 
     public static void main(String[] args) {
-        final GpioController gpio = GpioFactory.getInstance();
-
-        final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
-        final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_13, "MyLED", PinState.HIGH);
-        
-        myButton.addListener((GpioPinListenerDigital)(GpioPinDigitalStateChangeEvent event) -> {
-            if(led.isHigh()){
-                led.setState(PinState.LOW);
-                try {
-                    QuestionMode.closeMode();
-                    FreeMode.runMode();
-                } catch (Exception ex) {
-                    Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            final GpioController gpio = GpioFactory.getInstance();
+            
+            final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
+            final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_13, "MyLED", PinState.HIGH);
+            FreeMode.runMode();
+            
+            myButton.addListener((GpioPinListenerDigital)(GpioPinDigitalStateChangeEvent event) -> {
+                if(led.isHigh()){
+                    led.setState(PinState.LOW);
+                    try {
+                        QuestionMode.closeMode();
+                        FreeMode.runMode();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }else{
+                    led.setState(PinState.HIGH);
+                    try {
+                        FreeMode.closeMode();
+                        QuestionMode.runMode();
+                    } catch (Exception ex) {
+                        Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }else{
-                led.setState(PinState.HIGH);
-                try {
-                    FreeMode.closeMode();
-                    QuestionMode.runMode();
-                } catch (Exception ex) {
-                    Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
+            });
+        } catch (Exception ex) {
+            Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
