@@ -29,11 +29,13 @@ public class Button {
             
             final GpioPinDigitalInput myButton = gpio.provisionDigitalInputPin(RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN);
             final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_13, "MyLED", PinState.HIGH);
+            final GpioPinDigitalOutput led2 = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_14, "MyLED", PinState.LOW);
             FreeMode.runMode();
             
             myButton.addListener((GpioPinListenerDigital)(GpioPinDigitalStateChangeEvent event) -> {
                 if(led.isHigh()){
                     led.setState(PinState.LOW);
+                    led2.setState(PinState.HIGH);
                     try {
                         QuestionMode.closeMode();
                         FreeMode.runMode();
@@ -41,6 +43,7 @@ public class Button {
                         Logger.getLogger(Button.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }else{
+                    led2.setState(PinState.LOW);
                     led.setState(PinState.HIGH);
                     try {
                         FreeMode.closeMode();
