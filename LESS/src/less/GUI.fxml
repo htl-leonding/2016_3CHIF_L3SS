@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="95.0" prefWidth="329.0" scaleShape="false" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="less.GUIController">
+   <children>
+      <Button fx:id="questionBtn" layoutX="185.0" layoutY="27.0" mnemonicParsing="false" onAction="#runQuestionMode" prefHeight="46.0" prefWidth="130.0" text="Question Mode" />
+      <Button fx:id="freeBtn" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#runFreeMode" prefHeight="46.0" prefWidth="130.0" text="Free Mode" />
+   </children>
+</AnchorPane>
