@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -27,6 +28,8 @@ public class GUIController implements Initializable {
     private Button questionBtn;
     @FXML
     private Button freeBtn;
+    @FXML
+    private Label lbMode;
 
     /**
      * Initializes the controller class.
@@ -45,7 +48,7 @@ public class GUIController implements Initializable {
         } catch (PhidgetException | IOException ex) {
             Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        lbMode.setText("Running Mode: QuestionMode");
     }
 
     @FXML
@@ -57,7 +60,7 @@ public class GUIController implements Initializable {
         } catch (Exception ex) {
             Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        lbMode.setText("Running Mode: FreeMode");
     }
 
 }
