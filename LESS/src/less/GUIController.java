@@ -11,56 +11,56 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
+/*import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+*/
 /**
  * FXML Controller class
  *
  * @author cristian
  */
-public class GUIController implements Initializable {
+//public class GUIController implements Initializable {
 
-    @FXML
-    private Button questionBtn;
-    @FXML
-    private Button freeBtn;
-    @FXML
-    private Label lbMode;
+//    @FXML
+//    private Button questionBtn;
+//    @FXML
+//    private Button freeBtn;
+//    @FXML
+//    private Label lbMode;
+//
+//    /**
+//     * Initializes the controller class.
+//     */
+//    @Override
+//    public void initialize(URL url, ResourceBundle rb) {
+//        // TODO
+//    }
+//
+//    @FXML
+//    private void runQuestionMode(ActionEvent event) {
+//
+//        try {
+//            FreeMode.closeMode();
+//            QuestionMode.runMode();
+//        } catch (PhidgetException | IOException ex) {
+//            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        lbMode.setText("Running Mode: QuestionMode");
+//    }
+//
+//    @FXML
+//    private void runFreeMode(ActionEvent event) {
+//
+//        try {
+//            QuestionMode.closeMode();
+//            FreeMode.runMode();
+//        } catch (Exception ex) {
+//            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        lbMode.setText("Running Mode: FreeMode");
+//    }
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-
-    @FXML
-    private void runQuestionMode(ActionEvent event) {
-
-        try {
-            FreeMode.closeMode();
-            QuestionMode.runMode();
-        } catch (PhidgetException | IOException ex) {
-            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        lbMode.setText("Running Mode: QuestionMode");
-    }
-
-    @FXML
-    private void runFreeMode(ActionEvent event) {
-
-        try {
-            QuestionMode.closeMode();
-            FreeMode.runMode();
-        } catch (Exception ex) {
-            Logger.getLogger(GUIController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        lbMode.setText("Running Mode: FreeMode");
-    }
-
-}
+//}

@@ -24,12 +24,12 @@ class CsvReader {
  
     private static final String SEPARATOR = ",";
     private static final String FILENAME = "toys.csv";      //set costants
-    public static final String path = System.getProperty("user.dir") +  //set path
-        System.getProperty("file.separator") + "mp3" + 
-        System.getProperty("file.separator");
-    
+    //public static final String path = System.getProperty("user.dir") +  //set path
+      //  System.getProperty("file.separator") + "mp3" + 
+        //System.getProperty("file.separator");
+    public static String path = "/home/pi/Desktop/2016_3CHIF_L3SS-master/LESS/mp3/";
     public static void read(List<Gegenstand> gegenstandsListe) throws IOException{      //Read from csv
-        List<String> lines = Files.readAllLines(Paths.get(FILENAME));
+        List<String> lines = Files.readAllLines(Paths.get("/home/pi/Desktop/2016_3CHIF_L3SS-master/LESS/"+FILENAME));
         for (String line : lines) {
             System.out.println(line);
             String[] elements = line.split(SEPARATOR);
