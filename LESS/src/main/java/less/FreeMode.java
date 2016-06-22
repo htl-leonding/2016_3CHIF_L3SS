@@ -67,7 +67,7 @@ public class FreeMode {
                     }
                 });
                 rfid.openAny();
-                rfid.waitForAttachment(1000);
+                rfid.waitForAttachment(10000);
             } catch (PhidgetException | IOException e) {
                 Logger.getLogger(FreeMode.class.getName()).log(Level.SEVERE, null, e);
             }
