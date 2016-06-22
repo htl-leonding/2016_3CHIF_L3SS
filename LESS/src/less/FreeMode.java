@@ -26,8 +26,6 @@ public class FreeMode {
             try {
                 CsvReader.read(toys);                                                   //read the toys from csv
                 rfid = new RFIDPhidget();
-
-                CsvReader.read(toys);
                 //Chip scanner (RFID) conectet
                 rfid.addAttachListener(new AttachListener() {                           //check if the RFID Reader is Connected
                     public void attached(AttachEvent ae) {
